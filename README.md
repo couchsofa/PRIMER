@@ -9,7 +9,6 @@ Download the VM image and import it as an appliance.
 
 Set the connection type to bridged and connect to the ip of the VM with your browser.
 
-Bearbeiten
 ## Download
 
 morbi-happens.de/dump/PRIMER.tar
