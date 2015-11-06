@@ -1,0 +1,42 @@
+body {
+  background-color: #000000;
+  color: #336699;
+  font-family: "Courier New", Courier, monospace;
+}
+
+div.foo {
+  padding:20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  font-size: 14px;
+}
+
+h1 {
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+p {
+  text-align: justify;
+}
+
+pre {
+  padding: 20px;
+  font-size: 8px;
+}
+
+div.quote {
+  font-style: italic;
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+div.author {
+  font-size: 10px;
+  margin-top: 10px;
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+a {
+    text-decoration: none;
+    color: #336699;
+}

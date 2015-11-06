@@ -1,0 +1,709 @@
+<html>
+<head>
+<title>PRIMER</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="pragma" content="no-cache" />
+<script type="text/javascript">
+
+function ready(fn) {
+	if (document.readyState != 'loading'){
+		fn()
+	} else {
+		document.addEventListener('DOMContentLoaded', fn)
+	}
+}
+
+function loop(canvas) {
+	var context = canvas.getContext( '2d' );
+	context.globalCompositeOperation = 'lighter';
+
+	var offset = Math.floor(window.innerHeight/20)
+	offset = Array(offset+1).join(' ').split('')
+
+	var credits = [
+
+	['[PRIMER]'],
+
+	['','','','',
+	'                                ,_-=(!7(7/zs_.',
+	'                             .=\'  \' .`/,/!(=)Zm.',
+	'               .._,,._..  ,-`- `,\\ ` -` -`\\\\7//WW.',
+	'          ,v=~/.-,-\\- -!|V-s.)iT-|s|\\-.\'   `///mK%.',
+	'        v!`i!-.e]-g`bT/i(/[=.Z/m)K(YNYi..   /-]i44M.',
+	'      v`/,`|v]-DvLcfZ/eV/iDLN\\D/ZK@%8W[Z..   `/d!Z8m',
+	'     //,c\\(2(X/NsYNY8]ZZ/bZd\\()/\\7WY%WKKW)   -\'|(][%4.',
+	'   ,\\\\i\\c(e)WX@WKKZKDKWMZ8(b5/ZK8]Z7%ffVM,   -.Y!bNMi',
+	'   /-iit5N)KWG%%8%%%%W8%ZWM(8YZvD)XN(@.  [   \\]!/GXW[',
+	'  / ))G8\\NMN%W%%%%%%%%%%8KK@WZKYK*ZG5KMi,-   vi[NZGM[',
+	' i\\!(44Y8K%8%%%**~YZYZ@%%%%%4KWZ/PKN)ZDZ7   c=//WZK%!',
+	',\\v\\YtMZW8W%%f`,`.t/bNZZK%%W%%ZXb*K(K5DZ   -c\\\\/KM48',
+	'-|c5PbM4DDW%f  v./c\\[tMY8W%PMW%D@KW)Gbf   -/(=ZZKM8[',
+	'2(N8YXWK85@K   -\'c|K4/KKK%@  V%@@WD8e~  .//ct)8ZK%8`',
+	'=)b%]Nd)@KM[  !\'\\cG!iWYK%%|   !M@KZf    -c\\))ZDKW%`',
+	'YYKWZGNM4/Pb  \'-VscP4]b@W%     \'Mf`   -L\\///KM(%W!',
+	'!KKW4ZK/W7)Z. \'/cttbY)DKW%     -`  .\',\\v)K(5KW%%f',
+	'\'W)KWKZZg)Z2/,!/L(-DYYb54%  ,,`, -\\-/v(((KK5WW%f',
+	' \\M4NDDKZZ(e!/\\7vNTtZd)8\\Mi!\\-,-/i-v((tKNGN%W%%',
+	' \'M8M88(Zd))///((|D\\tDY\\\\KK-`/-i(=)KtNNN@W%%%@%[',
+	'  !8%@KW5KKN4///s(\\Pd!ROBY8/=2(/4ZdzKD%K%%%M8@%%',
+	'   \'%%%W%dGNtPK(c\\/2\\[Z(ttNYZ2NZW8W8K%%%%YKM%M%%.',
+	'     *%%W%GW5@/%!e]_tZdY()v)ZXMZW%W%%%*5Y]K%ZK%8[',
+	'      \'*%%%%8%8WK\\)[/ZmZ/Zi]!/M%%%%@f\\ \\Y/NNMK%%!',
+	'        \'VM%%%%W%WN5Z/Gt5/b)((cV@f`  - |cZbMKW%%|',
+	'           \'V*M%%%WZ/ZG\\t5((+)L\'-,,/    -)X(NWW%%',
+	'                `~`MZ/DZGNZG5(((\\,    ,t\\\\Z)KW%@',
+	'                   \'M8K%8GN8\\5(5///]i!v\\K)85W%%f',
+	'                     YWWKKKKWZ8G54X/GGMeK@WM8%@',
+	'                      !M8%8%48WG@KWYbW%WWW%%%@',
+	'                        VM%WKWK%8K%%8WWWW%%%@`',
+	'                          ~*%%%%%%W%%%%%%%@~',
+	'                             ~*MM%%%%%%@f`',
+	'                                 \'\'\'\'\' '],
+
+	['','','',
+	"A year here and he still dreamed of cyberspace, hope fading nightly.",
+	"All the speed he took, all the turns he'd taken and the corners he'd cut in Night City,",
+	"and he'd still see the matrix in his sleep, bright lattices of logic",
+	"unfolding across that colorless void…",
+	'',
+	' - William Gibson, Neuromancer'],
+
+	offset,
+
+	['','','',
+	'                 ______',
+	'                /     /\\',
+	'               /     /##\\',
+	'              /     /####\\',
+	'             /     /######\\',
+	'            /     /########\\',
+	'           /     /##########\\',
+	'          /     /#####/\\#####\\',
+	'         /     /#####/++\\#####\\',
+	'        /     /#####/++++\\#####\\',
+	'       /     /#####/\\+++++\\#####\\',
+	'      /     /#####/  \\+++++\\#####\\',
+	'     /     /#####/    \\+++++\\#####\\',
+	'    /     /#####/      \\+++++\\#####\\',
+	'   /     /#####/        \\+++++\\#####\\',
+	'  /     /#####/__________\\+++++\\#####\\',
+	' /                        \\+++++\\#####\\',
+	'/__________________________\\+++++\\####/',
+	'\\+++++++++++++++++++++++++++++++++\\##/',
+	' \\+++++++++++++++++++++++++++++++++\\/',
+	'  ``````````````````````````````````',
+	'',
+	'',
+	'',
+	'',
+	''],
+
+	['[made by]'],
+
+	['',
+	'couchsofa',
+	'',
+	'',
+	'',
+	''],
+
+	['[many thanks to]'],
+
+	['',
+	'morbidick',
+	'einball',
+	'sarah',
+	'',
+	'I would probably have never finished',
+	'this project without you guys ;)',
+	'',
+	'',
+	'',
+	'',
+	'mostley',
+	'',
+	'For hinting me to Erik Österberg\'s Terminal.js',
+	'',
+	'',
+	'',
+	'',
+	'0xBEEF',
+	'',
+	'For providing fuel in the form of fudge',
+	'and premium grilled goods',
+	''],
+
+	['','',
+	'    ___  ____  ____  ____',
+	'  /\\   \\/\\   \\/\\   \\/\\   \\',
+	' /  \\___\\ \\___\\ \\___\\ \\___\\',
+	' \\  / __/_/   / /   / /   /',
+	'  \\/_/\\   \\__/\\/___/\\/___/',
+	'    /  \\___\\    /  \\___\\',
+	'    \\  / __/_  _\\  /   /',
+	'     \\/_/\\   \\/\\ \\/___/',
+	'       /  \\__/  \\___\\',
+	'       \\  / _\\  /   /',
+	'        \\/_/\\ \\/___/',
+	'          /  \\___\\',
+	'          \\  /   /',
+	'           \\/___/',
+	''],
+
+	offset,
+
+	['','[dedicated to]'],
+	[
+	'',
+	'sycramore',
+	'',
+	'',
+	'A very special person in my life',
+	'who inspired me to write the PRIMER',
+	'',
+	'╔══════════════════╗',
+	'║ h (∂ψ/∂ t) = H ψ ║',
+	'╚══════════════════╝'
+	]];
+
+	var creditLength = 0;
+
+	for (var i = 0; i < credits.length; i++) {
+		creditLength += credits[i].length;
+	};
+
+	textY = canvas.height/2;
+	invert = 1;
+	frame = 0;
+	counter = 0;
+	strp_update_speed = 13;
+	color_fade_speed = 15;
+	strip_speed = 1;
+	poly_color_fade_speed = 5;
+	polygon_count = 5;
+	polygon_speed = 1;
+	polygonChange_speed = 30;
+	polygon_movement_speed = 2;
+	text_speed = 2;
+	stripCount_speed = 60;
+	countdown_to_fadeout_I = 10;
+	countdown_to_fadeout_II = 200;
+	dYTEXT = 1;
+	alpha_txt = 1;
+	alpha_poly = 0;
+	alpha_poly_node = 0;
+	alpha_strp = 1;
+	blurFactor = 1;
+	shadowBlur = 5;
+	shadowBlurFactor = 1;
+	distance = [0,0,0];
+
+	var nodes = [];
+	var node_delta = [];
+
+	for (var i = 0; i < polygon_count; i++) {
+		nodes[i] = [];
+		node_delta[i] = [];
+		for (var j = 0; j < rand(5,9); j++) {
+			nodes[i][j] = new Array(rand(50,canvas.width-50),rand(50,canvas.height-50), rand(2,4),0);
+			node_delta[i][j] = new Array(rand(-5,5),rand(-5,5),rand(-5,5),rand(-5,5));
+		}
+	}
+
+	color_index = 0;
+
+									 // R,   G,   B
+	color_txt_arr = [[173, 194, 153],
+									 [230, 230,  92],
+									 [153, 255, 102],
+									 [138, 184, 230],
+									 [59, 182, 235]];
+
+	color_txt = [59, 182, 235];
+	color_poly = [59, 182, 235];
+
+	distance[0] = color_txt_arr[0][0] - color_txt[0];
+	distance[1] = color_txt_arr[0][1] - color_txt[1];
+	distance[2] = color_txt_arr[0][2] - color_txt[2];
+
+	if(color_txt[0])
+	color_txt[0] += (color_txt_arr[color_index][0] - color_txt_arr[color_index+1][0])/100;
+
+	draw();
+
+	var textStrip = ['P', 'R', 'I', 'M', 'E', 'R',
+					 'p', 'r', 'i', 'm', 'e', 'r'];
+
+	var stripCount = Math.floor(canvas.width/25);
+
+	if (stripCount > 20) {stripCount=20};
+
+	var stripX = new Array();
+	var stripY = new Array();
+	var dY = new Array();
+	var stripFontSize = new Array();
+
+	for (var i = 0; i < stripCount; i++) {
+		stripX[i] = Math.floor(Math.random()*1265);
+		stripY[i] = -100;
+		dY[i] = Math.floor( Math.random()*2)+3;
+		stripFontSize[i] = Math.floor(Math.random()*16)+8;
+	}
+
+	var theColors = [[53, 59, 69],
+									 [38, 64, 82],
+									 [24, 79, 71],
+									 [22, 54, 82],
+									 [16, 59, 87],
+									 [14, 77, 70],
+									 [ 6, 37, 82]];
+
+	var elem, context, timer;
+
+	var strp_char = [];
+	for (var i = 0; i < stripCount; i++) {
+		strp_char[i] = [];
+		for (var k = 0; k <= 30; k++) {
+			strp_char[i][k] = textStrip[Math.floor(Math.random()*textStrip.length)];
+		}
+	}
+
+	function update_strip(){
+		for (var i = 0; i < stripCount; i++) {
+			for (var k = 0; k <= 30; k++) {
+				strp_char[i][k] = textStrip[Math.floor(Math.random()*textStrip.length)];
+			}
+		}
+	}
+	
+
+	function drawStrip(x, y, strp_char) {
+		for (var k = 0; k <= 30; k++) {
+			//var randChar = textStrip[Math.floor(Math.random()*textStrip.length)];
+			if (context.fillText) {
+				switch (k) {
+				case 0:
+					context.fillStyle = "rgba("+theColors[0][0]+", "+
+																			theColors[0][1]+", "+
+																			theColors[0][2]+", " +
+																			alpha_strp + ")";
+				break;
+				case 1:
+					context.fillStyle = "rgba("+theColors[1][0]+", "+
+																			theColors[1][1]+", "+
+																			theColors[1][2]+", " +
+																			alpha_strp + ")";
+				break;
+				case 3:
+					context.fillStyle = "rgba("+theColors[2][0]+", "+
+																			theColors[2][1]+", "+
+																			theColors[2][2]+", " +
+																			alpha_strp + ")";
+				break;
+				case 7:
+					context.fillStyle = "rgba("+theColors[3][0]+", "+
+																			theColors[3][1]+", "+
+																			theColors[3][2]+", " +
+																			alpha_strp + ")";
+				break;
+				case 13:
+					context.fillStyle = "rgba("+theColors[4][0]+", "+
+																			theColors[4][1]+", "+
+																			theColors[4][2]+", " +
+																			alpha_strp + ")";
+				break;
+				case 17:
+					context.fillStyle = "rgba("+theColors[5][0]+", "+
+																			theColors[5][1]+", "+
+																			theColors[5][2]+", " +
+																			alpha_strp + ")";
+				break;
+				}
+				context.fillText(strp_char[k], x, y);
+			}
+			y -= stripFontSize[k];
+		}
+	}
+
+
+	function rollCredits(){
+		showText(credits,canvas,context,textY);
+		if (frame % color_fade_speed == 0) {
+			//color fade
+			for (var i = 0; i < 3; i++) {
+				if( color_txt[i] != color_txt_arr[color_index][i] ){
+
+					if (color_txt[i] < color_txt_arr[color_index][i]) {
+						color_txt[i] += 1;
+					} else {
+						color_txt[i] -= 1;
+					}
+				} else {
+					color_index += 1;
+					if (color_index > color_txt_arr.length - 1) {
+						color_index = 0;
+					}
+				}
+				color_txt[i] = Math.floor(color_txt[i]);
+			}
+		}
+	}
+
+	function polygonAnimation(){
+		//alpha_poly = 1;
+		//alpha_poly_node = 1;
+
+		if (frame % poly_color_fade_speed == 0) {
+			//color fade
+			for (var i = 0; i < 3; i++) {
+				if( color_poly[i] != color_txt_arr[color_index][i] ){
+
+					if (color_poly[i] < color_txt_arr[color_index][i]) {
+						color_poly[i] += 1;
+					} else {
+						color_poly[i] -= 1;
+					}
+				} else {
+					color_index += 1;
+					if (color_index > color_txt_arr.length - 1) {
+						color_index = 0;
+					}
+				}
+				color_poly[i] = Math.floor(color_poly[i]);
+			}
+		}
+
+		for (var i = 0; i < nodes.length; i++) {
+			showPolyGraph(canvas,context,nodes[i]);
+		}
+
+		for (var i = 0; i < nodes.length; i++) {
+			var s = polygon_movement_speed/polygonChange_speed;
+			node_delta[i][0] = rand(-s,s);
+			node_delta[i][1] = rand(-s,s);
+			node_delta[i][2] = rand(-5,5);
+			node_delta[i][2] = rand(-1,1);
+		}
+
+		if (frame % polygon_speed == 0) {
+			for (var n = 0; n < nodes.length; n++) {
+				for (var i = 0; i < nodes[n].length; i++) {
+					
+					if (nodes[n][i][0] < 20 || nodes[n][i][0] > canvas.width -20) {
+						node_delta[n][i][0] *= -1*invert;
+					}
+					nodes[n][i][0] += node_delta[n][i][0]/polygon_speed;
+					
+					if (nodes[n][i][1] < 20 || nodes[n][i][1] > canvas.height -20) {
+						node_delta[n][i][1] *= -1*invert;
+					}
+					nodes[n][i][1] += node_delta[n][i][1]/polygon_speed;
+
+					if (nodes[n][i][2] < 2 || nodes[n][i][2] > 4) {
+						node_delta[n][i][2] *= -1;
+					}
+
+					nodes[n][i][2] += node_delta[n][i][2]/(polygon_speed*100);
+
+					if (nodes[n][i][2] < 0) {
+						nodes[n][i][2] = 0;
+					}
+
+					if (nodes[n][i][3] < 0 || nodes[n][i][3] > 1) {
+						node_delta[n][i][3] *= -1;
+					}
+
+					nodes[n][i][3] += node_delta[n][i][3]/(polygon_speed*100);
+				}
+			}
+		}
+	}
+
+	function showDedication(){
+		//Headline
+		context.style = "";
+		var lineHeight = 38;
+		var lineWidth = 4;
+		var align = "center";
+		context.textAlign = align;
+		context.strokeStyle = "rgba(0, 0, 0, " + alpha_txt + ")";
+		context.font= (lineHeight - 2) + "px Courier New";
+		context.lineWidth = lineWidth;
+		context.strokeText(credits[0][0], canvas.width/2, canvas.height/2 - 60);
+		context.fillStyle="rgba("+color_txt[0]+","+color_txt[1]+","+color_txt[2]+"," + alpha_txt + ")";
+		context.font=(lineHeight - 2) + "px Courier New";
+		context.fillText(credits[0][0], canvas.width/2, canvas.height/2 - 60);
+
+
+		//Dedication
+		lineHeight = 18;
+		lineWidth = 3;
+		style = "bold";
+		multiLineText(credits[11],context,canvas,lineHeight,lineWidth,align,style,canvas.height/2 - 20)
+
+		style = "";
+		multiLineText(credits[12],context,canvas,lineHeight,lineWidth,align,style,canvas.height/2)
+	}
+
+	function matrixEffect(){
+		if( alpha_strp >= 0.01) {
+
+			for (var j = 0; j < stripCount; j++) {
+				context.font = stripFontSize[j]+'px MatrixCode';
+				context.textBaseline = 'top';
+				context.textAlign = 'center';
+				
+				if (stripY[j] > canvas.height + 500) {
+
+					stripX[j] = Math.floor(Math.random()*canvas.width);
+					stripY[j] = -100;
+					dY[j] =Math.floor( Math.random()*2)+3;
+					stripFontSize[j] = Math.floor(Math.random()*16)+8;
+					drawStrip(stripX[j], stripY[j],strp_char[j]);
+
+				} else {
+
+					drawStrip(stripX[j], stripY[j],strp_char[j]);
+
+				}
+				
+				if( frame % strp_update_speed == 0) update_strip();
+
+				stripY[j] += dY[j];
+			}
+		}
+	}
+
+	function draw() {
+		// clear the canvas and set the properties
+		context.clearRect(0, 0, canvas.width, canvas.height);
+
+		context.shadowOffsetX = context.shadowOffsetY = 0;
+		context.shadowBlur = shadowBlur * shadowBlurFactor;
+		context.shadowColor = "rgba("+color_txt[0]+","+color_txt[1]+","+color_txt[2]+"," + alpha_txt/2 + ")";
+
+		textY -= dYTEXT/text_speed;
+
+		if (textY > (creditLength) * -11.4) {
+
+			rollCredits()
+
+		} else {
+
+			alpha_strp -= 0.01;
+			counter += 1;
+
+			if (counter > 500 && alpha_strp < 0.01) {
+				alpha_poly -= 0.001;
+				alpha_poly_node -= 0.01;
+				invert = -1;
+			}
+
+			if (invert == -1) {
+
+				if(alpha_txt <= 1 
+					&& counter <= 1500
+					&& alpha_poly <= 0.01
+					&& alpha_poly_node <= 0.01) {
+						alpha_txt += 0.01;
+				}
+
+				if(alpha_txt > 0 && counter > 1500){
+					alpha_txt -= 0.02;
+
+				}
+
+				showDedication()
+
+			} else {
+				alpha_txt = 0;
+				if(alpha_poly < 1 && invert != -1) alpha_poly += 0.001;
+				if (alpha_poly_node < 1 && invert != -1) alpha_poly_node += 0.01;
+			}
+
+			if(!(alpha_txt > 0.1)){
+				polygonAnimation()
+			}
+		}
+
+		if(!(alpha_strp < 0.1)){
+			matrixEffect()
+		}
+		
+
+		frame += 1;
+		window.requestAnimationFrame(draw);
+	}
+}
+
+function multiLineText(text,context,canvas,lineHeight,lineWidth,align,style,textY){
+
+	//SHADOW
+	context.textAlign = align;
+	context.strokeStyle = "rgba(0, 0, 0, " + alpha_txt + ")";
+	context.font= style + " " + (lineHeight - 2) + "px Courier New";
+	context.lineWidth = lineWidth;
+
+	//left = manual centering
+	var width = 0;
+	if(align == "left"){
+		for (var i = 0; i < text.length; i++) {
+			if( context.measureText(text[i]).width > width ) {
+				width = context.measureText(text[i]).width;
+			}
+		}
+	}
+
+	for (var i = 0; i < text.length; i++) {
+		context.strokeText(text[i], canvas.width/2 - width/2, textY + lineHeight*i);
+	}
+
+	//FILL
+	context.fillStyle="rgba("+color_txt[0]+","+color_txt[1]+","+color_txt[2]+"," + alpha_txt + ")";
+	context.font=style + " " + (lineHeight - 2) + "px Courier New";
+
+	for (var i = 0; i < text.length; i++) {
+		context.fillText(text[i], canvas.width/2 - width/2, textY + lineHeight*i);
+	}
+
+	return lineHeight * text.length;
+}
+
+function line(startX,startY,endX,endY,context,alpha){
+	context.beginPath();
+	context.moveTo(startX,startY);
+	context.lineTo(endX,endY);
+	context.lineWidth = 1;
+	context.strokeStyle = "rgba("+color_poly[0]+","+color_poly[1]+","+color_poly[2]+"," + alpha*alpha_poly + ")";
+	context.stroke();
+}
+
+function circle(radius,x,y,context){
+	context.beginPath();
+	context.arc(x, y, radius, 0, Math.PI*2, true);
+	context.fillStyle = "rgba("+color_poly[0]+","+color_poly[1]+","+color_poly[2]+"," + alpha_poly_node + ")";
+	context.fill();
+}
+
+function showPolyGraph(canvas,context,nodes){
+	//nodes
+	for (var i = 0; i < nodes.length; i++) {
+		circle(nodes[i][2],nodes[i][0],nodes[i][1],context);
+	}
+	//connections
+	for (var i = 0; i < nodes.length; i++) {
+		for (var j = 0; j < nodes.length; j++) {
+			line(nodes[i][0],nodes[i][1],nodes[j][0],nodes[j][1],context,nodes[j][3]);
+		}
+	}
+}
+
+function rand(min, max){
+	return Math.random() * (max - min) + min;
+}
+
+function showText(text,canvas,context,textY){
+	var linePos = 0;
+
+	var style = "";
+	var lineHeight = 38;
+	var lineWidth = 4;
+	var align = "center";
+
+
+	//Headline
+	context.textAlign = align;
+	context.strokeStyle = "rgba(0, 0, 0, " + alpha_txt + ")";
+	context.font= (lineHeight - 2) + "px Courier New";
+	context.lineWidth = lineWidth;
+	context.strokeText(text[0][0], canvas.width/2, textY);
+	context.fillStyle="rgba("+color_txt[0]+","+color_txt[1]+","+color_txt[2]+"," + alpha_txt + ")";
+	context.font=(lineHeight - 2) + "px Courier New";
+	context.fillText(text[0][0], canvas.width/2, textY);
+
+	linePos = lineHeight;
+
+	//Logo
+	lineHeight = 10;
+	lineWidth = 2;
+	align = "left";
+	linePos += multiLineText(text[1],context,canvas,lineHeight,lineWidth,align,style,textY + linePos)
+
+	//Quote
+	lineHeight = 18;
+	lineWidth = 3;
+	align = "center";
+	linePos += multiLineText(text[2],context,canvas,lineHeight,lineWidth,align,style,textY + linePos)
+
+	//Offset
+	linePos += multiLineText(text[3],context,canvas,lineHeight,lineWidth,align,style,textY + linePos)
+
+	//Logo
+	lineHeight = 10;
+	lineWidth = 2;
+	align = "left";
+	linePos += multiLineText(text[4],context,canvas,lineHeight,lineWidth,align,style,textY + linePos)
+
+	//Made by
+	lineHeight = 18;
+	lineWidth = 3;
+	align = "center";
+	style = "bold";
+	linePos += multiLineText(text[5],context,canvas,lineHeight,lineWidth,align,style,textY + linePos)
+	
+	//couchsofa
+	style = "";
+	linePos += multiLineText(text[6],context,canvas,lineHeight,lineWidth,align,style,textY + linePos)
+
+	//Thanks to
+	style = "bold";
+	linePos += multiLineText(text[7],context,canvas,lineHeight,lineWidth,align,style,textY + linePos)
+	
+	//credits
+	style = "";
+	linePos += multiLineText(text[8],context,canvas,lineHeight,lineWidth,align,style,textY + linePos)
+
+	//Logo
+	lineHeight = 10;
+	lineWidth = 2;
+	align = "left";
+	linePos += multiLineText(text[9],context,canvas,lineHeight,lineWidth,align,style,textY + linePos)
+
+	//Offset
+	linePos += multiLineText(text[10],context,canvas,lineHeight,lineWidth,align,style,textY + linePos)
+}
+
+ready( function(){
+
+	var canvas = document.body.appendChild( document.createElement( 'canvas' ) )
+	var context = canvas.getContext("2d");
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+
+	loop(canvas);
+})
+</script>
+
+<style type="text/css">
+
+	html, body {
+		width:  100%;
+		height: 100%;
+		margin: 0px;
+	}
+
+	body {
+	background-color: #000000;
+	color: #00E61B;
+	font-family: "Courier New", Courier, monospace;
+	}
+
+	::-webkit-scrollbar { 
+		display: none; 
+	}
+
+</style>
+</head>
+<body>
+</body>
+</html>
