@@ -1,0 +1,2 @@
+# PRIMER
+This is a story based hacking challenge written in a style heavily inspired by Neil Stephensons Snow Crash and William Gibsons Sprawl Trilogy. Each chapter is unlocked by solving the puzzle. From hardcoded clear text javascript password checks, SQL-injections and cracking hashes to a simulated terminal. You only need to start the VM, a webserver will come up and you can connect with your browser. In fact you never have to leave the browser.
